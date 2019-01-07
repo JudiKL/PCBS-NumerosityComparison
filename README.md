@@ -4,7 +4,7 @@
 Some trials : 
 # PCBS : expérimentation visant à voir l'influence de la taille et du nombre de points sur une tâche de comparaison rapide.
 
-# Il y aura deux ensembles de points présentés simultanément. Ils seront présentés au sein de 2 rectangles artificiels. Cela me permet de mieux ajuster ll'espacement lors des simulations.
+# Il y aura deux ensembles de points présentés simultanément. Ils seront présentés au sein de 2 rectangles artificiels. Cela me permet de mieux ajuster l'espacement lors des simulations.
 pygame.draw.rect(screen, black, (0,0,300,600), 0)
 pygame.draw.rect(screen, black, (500,0,300,600), 0)
 
