@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+## PCBS Non Numerical Dimensions and Numerosity Comparison Task
 
-You can use the [editor on GitHub](https://github.com/JudiKL/PCBS-NumerosityDimensions/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## 1.Preparation of the stimulus with PyGame
+Some trials : 
+# PCBS : expérimentation visant à voir l'influence de la taille et du nombre de points sur une tâche de comparaison rapide.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Il y aura deux ensembles de points présentés simultanément. Ils seront présentés au sein de 2 rectangles artificiels. Cela me permet de mieux ajuster ll'espacement lors des simulations.
+pygame.draw.rect(screen, black, (0,0,300,600), 0)
+pygame.draw.rect(screen, black, (500,0,300,600), 0)
 
-### Markdown
+# Dessiner deux ensembles de points aléatoires
+# Premier ensemble de points aléatoires
+compteur_gauche = random.randint(1, 10)
+nombre_cercles_gauches = 0
+radius_gauche = 2*compteur_gauche # Test pour faire un rapport taille-nombre de points congruent
+while nombre_cercles_gauches < compteur_gauche:
+	position_cercle_x_gauche = random.randint(5, 300)
+	position_cercle_y_gauche = random.randint(5, 555)
+	pygame.draw.circle(screen, yellow, (position_cercle_x_gauche,position_cercle_y_gauche), radius_gauche, 0)
+	nombre_cercles_gauches += 1
+# Deuxième ensemble de points aléatoires
+compteur_droit = random.randint(1,10)
+nombre_cercles_droits = 0
+radius_droit = 2*compteur_droit
+while nombre_cercles_droits < compteur_droit:
+	position_cercle_x_droit = random.randint(600, 755)
+	position_cercle_y_droit = random.randint(5, 555)
+	pygame.draw.circle(screen, yellow, (position_cercle_x_droit,position_cercle_y_droit), radius_droit, 0)
+	nombre_cercles_droits += 1
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+## 2. Running The expyriment
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JudiKL/PCBS-NumerosityDimensions/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
