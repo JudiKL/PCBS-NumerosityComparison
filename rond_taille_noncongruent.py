@@ -1,6 +1,5 @@
 # PCBS : expérimentation visant à voir l'influence de la taille et du nombre de points sur une tâche de comparaison rapide.
-"""Module espacement congruent qui a pour but d'afficher des ensembles de points dont l'espacement est inversement proportionnel au nombre de points"""
-
+"""Module rond taile noncongruent qui a pour but d'afficher des ensembles de points dont le rayon est inversement proportionnel au nombre de points"""
 
 import pygame 
 import sys
@@ -17,32 +16,16 @@ def most_size_side(compteur_gauche, compteur_droit):
 	left_size = int()
 	right_size = int()
 	if compteur_gauche > compteur_droit :
-		right_size = random.randint(2,5) # Test pour faire un rapport taille-nombre de points congruent
-		left_size = 2*right_size
-	else :
 		left_size = random.randint(2,5)
 		right_size = 2*left_size
+	else :
+		right_size = random.randint(2,5) # Test pour faire un rapport taille-nombre de points congruent
+		left_size = 2*right_size
 	return left_size
 	return right_size
 
-def most_sparisty_side(compteur_gauche,compteur_droit):
-	"""Fonction qui détermine où les points seront théoriquement les plus éloignés entre eux"""
-
-	global left_sparsity
-	global right_sparsity
-	left_size = int()
-	right_size = int()
-	if compteur_gauche > compteur_droit :
-		right_sparsity = random.randint(35,40)
-		left_sparsity = 2*right_sparsity
-	else :
-		left_sparsity = random.randint(35,40)
-		right_sparsity = 2* left_sparsity
-	return left_sparsity
-	return right_sparsity
-
 def distance_points(couple1,couple2):
-	"""Fonction controllant la distance entre nos points pour notre ensemble de points aléatoires"""
+	"""Fonction controllant la distance entre les points pour notre ensemble de points aléatoires"""
 
 	return math.sqrt((couple1[0]-couple2[0])**2+(couple1[1]-couple2[1])**2) #Th pythagore : formule donnant la distance entre deux points adjacents
 
@@ -68,8 +51,8 @@ def check_range_dist(couple,liste_couple,dist_max):
 		compteur += 1
 	return range_dist
 
-def display_dots_sparsity_incong(file_name_spars_noncong):
-	""" Génère deux ensemble de points aléatoires dont l'espacement est d'autant plus grand qu'il y a de points"""
+def display_dots_size_incong(file_name_stim_noncong):
+	""" Génère deux ensemble de points aléatoires dont la taille est inversement proportionnelle au nombre de points"""
 	pygame.init()
 
 	screen = pygame.display.set_mode((1600,900)) # Définition de l'écran. La minimale selon les standards actuels est prise par défaut.
@@ -101,13 +84,9 @@ def display_dots_sparsity_incong(file_name_spars_noncong):
 	nombre_cercles_gauches = int()
 	nombre_cercles_droits = int()
 
-
-	radius_gauche = 8
-	radius_droit = 8
-
-	most_sparisty_side(compteur_gauche,compteur_droit)
-	range_dist_max_left = left_sparsity
-	range_dist_max_right = right_sparsity
+	most_size_side(compteur_gauche, compteur_droit) # Rapport taille/nombres de points
+	radius_gauche = left_size
+	radius_droit = right_size
 
 	coordonees_cercles_gauches = []
 	coordonees_cercles_droits = []
@@ -119,7 +98,7 @@ def display_dots_sparsity_incong(file_name_spars_noncong):
 	while nombre_cercles_gauches < compteur_gauche:
 		position_cercle_x_gauche = random.randint(260, 690)
 		position_cercle_y_gauche = random.randint(410, 690)
-		while check_superposition((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, radius_gauche) and check_range_dist((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, range_dist_max_left):  # Boucle qui empêche la superposition de points
+		while check_superposition((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, radius_gauche) and check_range_dist((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, 25): # Boucle qui empêche la superposition de points
 			position_cercle_x_gauche = random.randint(260, 690)
 			position_cercle_y_gauche = random.randint(410, 690)
 		print((position_cercle_x_gauche,position_cercle_y_gauche)) # Vérification dans la console
@@ -134,14 +113,14 @@ def display_dots_sparsity_incong(file_name_spars_noncong):
 	while nombre_cercles_droits < compteur_droit:
 		position_cercle_x_droit = random.randint(910, 1340)
 		position_cercle_y_droit = random.randint(410, 690)
-		while check_superposition((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, radius_droit) and check_range_dist((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, range_dist_max_right): # Boucle qui empêche la superposition de points
+		while check_superposition((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, radius_droit) and check_range_dist((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, 50): # Boucle qui empêche la superposition de points
 			position_cercle_x_droit = random.randint(910,1340)
 			position_cercle_y_droit = random.randint(410, 690)
 		pygame.draw.circle(screen, darkGrey, (position_cercle_x_droit,position_cercle_y_droit), radius_droit, 0)
 		nombre_cercles_droits += 1
 		coordonees_cercles_droits.append((position_cercle_x_gauche,position_cercle_y_gauche))
 	print("le nombre de cercles de à droite est de", nombre_cercles_droits)
-
+	
 
 	# sauvegarder au format png le stimulus
-	pygame.image.save(screen, file_name_spars_noncong)# sauvegarde l'image généré avec le nom choisi, pour la suite c'est le format png qui nous intéresse
+	pygame.image.save(screen, file_name_stim_noncong)# sauvegarde l'image généré avec le nom choisi, pour la suite c'est le format png qui nous intéresse

@@ -41,7 +41,7 @@ def most_sparisty_side(compteur_gauche,compteur_droit):
 	return right_sparsity
 
 def distance_points(couple1,couple2):
-	"""Fonction controllant la superposition des points pour notre ensemble de points aléatoires"""
+	"""Fonction controllant la distance entre nos points pour notre ensemble de points aléatoires"""
 
 	return math.sqrt((couple1[0]-couple2[0])**2+(couple1[1]-couple2[1])**2) #Th pythagore : formule donnant la distance entre deux points adjacents
 
@@ -51,7 +51,7 @@ def check_superposition(couple,liste_couple,radius):
 	overlap = False
 	compteur = 0
 	while not overlap and compteur<len(liste_couple):
-		new_couple = liste_couple[compteur] #Prend en compte le couple suivant
+		new_couple = liste_couple[compteur] #Prend en compte le couple de coordonées suivant
 		overlap = distance_points(couple, new_couple) < radius
 		compteur += 1
 	return overlap
@@ -65,9 +65,10 @@ def check_range_dist(couple,liste_couple,dist_max):
 		new_couple = liste_couple[compteur] #Prend en compte le couple suivant
 		range_dist = distance_points(couple, new_couple) > dist_max
 		compteur += 1
-	return overlap
+	return range_dist
 
-def display_dot_sparsity_cong():
+def display_dots_sparsity_cong(file_name_spars_cong):
+	""" Génère deux ensemble de points aléatoires dont l'espacement est d'autant plus petit qu'il y a de points"""
 	pygame.init()
 
 	screen = pygame.display.set_mode((1600,900)) # Définition de l'écran. La minimale selon les standards actuels est prise par défaut.
@@ -117,12 +118,9 @@ def display_dot_sparsity_cong():
 	while nombre_cercles_gauches < compteur_gauche:
 		position_cercle_x_gauche = random.randint(260, 690)
 		position_cercle_y_gauche = random.randint(410, 690)
-		while check_superposition((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, radius_gauche): # Boucle qui empêche la superposition de points
+		while check_superposition((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, radius_gauche) and check_range_dist((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, range_dist_max_left): # Boucle qui empêche la superposition de points
 			position_cercle_x_gauche = random.randint(260, 690)
-			position_cercle_y_gauche = random.randint(410, 690)
-			while check_range_dist((position_cercle_x_gauche,position_cercle_y_gauche), coordonees_cercles_gauches, range_dist_max_left): 
-				position_cercle_x_gauche = random.randint(260, 690)
-				position_cercle_y_gauche = random.randint(410, 690)
+			position_cercle_y_gauche = random.randint(410, 690) 
 		print((position_cercle_x_gauche,position_cercle_y_gauche)) # Vérification dans la console
 		pygame.draw.circle(screen, darkGrey, (position_cercle_x_gauche,position_cercle_y_gauche), radius_gauche, 0)
 		nombre_cercles_gauches += 1
@@ -135,17 +133,16 @@ def display_dot_sparsity_cong():
 	while nombre_cercles_droits < compteur_droit:
 		position_cercle_x_droit = random.randint(910, 1340)
 		position_cercle_y_droit = random.randint(410, 690)
-		while check_superposition((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, radius_droit): # Boucle qui empêche la superposition de points
+		while check_superposition((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, radius_droit) and  check_range_dist((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, range_dist_max_right): # Boucle qui empêche la superposition de points
 			position_cercle_x_droit = random.randint(910,1340)
-			position_cercle_y_droit = random.randint(410, 690)
-			while check_range_dist((position_cercle_x_droit,position_cercle_y_droit), coordonees_cercles_droits, range_dist_max_right): 
-				position_cercle_x_droit = random.randint(910, 1340)
-				position_cercle_y_droit = random.randint(410, 690)
+			position_cercle_y_droit = random.randint(410, 690) 
 		pygame.draw.circle(screen, darkGrey, (position_cercle_x_droit,position_cercle_y_droit), radius_droit, 0)
 		nombre_cercles_droits += 1
 		coordonees_cercles_droits.append((position_cercle_x_gauche,position_cercle_y_gauche))
 	print("le nombre de cercles de à droite est de", nombre_cercles_droits)
 
+	pygame.display.update()
+
 
 	# sauvegarder au format png le stimulus
-	pygame.image.save(screen, "stimulus_rond_sparsity_up.png")
+	pygame.image.save(screen, file_name_spars_cong)# sauvegarde l'image généré avec le nom choisi, pour la suite c'est le format png qui nous intéresse
