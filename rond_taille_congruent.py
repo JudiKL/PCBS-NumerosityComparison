@@ -55,7 +55,7 @@ def display_dots_size_cong(file_name_stim_cong):
 	""" Génère deux ensemble de points aléatoires dont la taille est proportionnelle au nombre de points"""
 	pygame.init()
 
-	screen = pygame.display.set_mode((1600,900)) # Définition de l'écran. La minimale selon les standards actuels est prise par défaut.
+	screen = pygame.display.set_mode((1600,900)) # Définition de la résolution pour mon écran.
 
 	red = (255,0,0)
 	green = (0,255,0)
