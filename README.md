@@ -3,7 +3,7 @@
 # <u>Plan</u>
 
 * Introduction
-* Preparation du the stimulus avec PyGame
+* Preparation du stimulus avec PyGame
 * Running The expyriment
 * Conclusion
 
