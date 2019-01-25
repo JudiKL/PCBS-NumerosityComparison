@@ -34,4 +34,25 @@ while nombre_cercles_droits < compteur_droit:
 
 ## 2. Running The expyriment
 
+# Title 1
+## Title 2
 
+**Gras**
+*italique*
+***gras italique***
+<u>souligne</u>
+
+* liste 
+* liste
+
+1.
+2.
+	*
+	
+> citation
+
+`citer code`
+
+```
+bloc de code
+```
