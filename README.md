@@ -34,7 +34,7 @@ Une croix de fixation est affichée durant 500 ms avant chaque essai pour que le
 
 Ok, let's dive in it !
 
-# 1.<u>Preparation du the stimulus avec PyGame</u>
+# 1.<u>Preparation du stimulus avec PyGame</u>
 
    J'ai choisi d'entreprendre ce projet de façon séquentielle, en créeant d'abord un module dédiée à la création de mes stimuli et à leur enregistrement. Chaque magnitude et stimuli fait l'objet d'un module qui lui est spécifiquement dédié. 
   
