@@ -211,7 +211,7 @@ Pour le rapport espacement/taille incongruent, j'ai fait l'inverse. Le but est q
 Pour sparsity_cong, le but est de jouer sur l'intuition que les points seront d'autant plus ressérés entre eux qu'il y en a.
 Le ratio choisi est de 1:2, dans des études sur la dimension de la densité, le rapport est de 1:3, mais ne la manipulant pas directement, je préfère choisir un ratio qui permettrait de rendre plus saillant visuellement l'espacement.
 
-## <u>2. Running The expyriment</u>
+# <u>2. Running The expyriment</u>
 
 ### <u>1. Préparation des stimuli</u>
 
