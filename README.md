@@ -45,8 +45,8 @@ while nombre_cercles_droits < compteur_droit:
 * liste 
 * liste
 
-1.
-2.
+1. Ex 1
+2. Ex 2
 	*
 	
 > citation
