@@ -1,4 +1,26 @@
-## PCBS Non Numerical Dimensions and Numerosity Comparison Task
+# PCBS Numerical Comparison Task vs. Non Numerical Dimensions
+
+# <u>Introduction</u>
+
+## <u>Points inférents</u> : 
+Parmi l'ensemble des prédispositions relatives à notre système naïf de connaissances (ou *core knowledge*) se trouve notre capacité à estimer pécisément et rapidement le nombre d'items présents dans un ensemble. Cette forme précoce de cognition numérique émergeant dès l'enfance est autrement nommée "numérosité" (Dehaene, 1997). Un des facteurs modulateurs de la numérosité est "l'effet de taille numérique", dont l'analyse répliquée montre que l'imprécision de notre estimation augmente au-delà de plus de 5 items contenus dans l'ensemble. Des psychologues comme Piaget ont aussi  mis en lumière l'influence de paramètres de dimensions non-numériques sur notree "sens des nombres". La taille, la densité ou l'espacement des objets peuvent  également nuancer la précision de l'estimation chez les enfants (Piaget, 1952). L'interrelation entre l'influence des dimensions non numériques, la numérosité, et la maturation des compétences mathématiques plus tard est toujours discutée. Toutefois, il est intéressant de noter que leur impact diffère individuellement et n'est pas homogène. Parmi les études s'étant intéressées aux variations interindividuelles vis-à_vis de l'influence de ces paramètres non-numériques chez les enfants, Viarouge et. al mettent en évidence dans une tâche de *matching* en choix forcé entre deux ensembles de points la préférence spontanée pour la taille, la densité, ou bien le nombre d'items présents dans un ensemble qui corrèle par la suite avec la performance des sujets dans une tâche de comparaison numérique (Viarouge et al., 2017). D'autres études de la numérosité chez une population de jeunes adultes autistes démontre une baisse de la précision lorsque l'ensemble d'objets (des points) à dénombrer sont présentés sous une forme évocative (i.e des formes d'animaux), que les auteurs expliquent par la propension qu'auraient les sujets autistes à vouloir déceler des patterns globaux (Meaux et al., 2014). 
+
+## <u>Projet</u> : 
+Reprenant les tâches expérimentales de Viarouge et al. (voir bibliographie), le projet vise à programmer
+la tâche expérimentale suivante :
+Il s'agit d'une tâche de comparaison numérique entre deux ensemble de points qui se déroule sur écran. 
+Sur la droite et gauche de l'écran sont présentées deux cartes présentant un ensemble de points
+La tâche du sujet est simplement de choisir laquelle de ces deux cartes contient le plus de points présent sur la carte centrale en pressant *flèche gauche* pour choisir celle de gauche et *flèche droite* pour celle de droite.
+<u>Deux magnitudes étudiées</u> : 
+* la taille 
+* la densité de points
+<u>Deux conditions par magnitude</u> :  
+* congruent : la taille des points est proportionnelle au nombre de points/la densité (concentration de points par unité d'aire) est proportionnelle au nombre de points
+* incongruent : la taille des points est inversement proportionnelle au nombre de points/la densité (concentration de points par unité d'aire) est inversement proportionnelle au nombre de points
+Pour que la réponse du sujet soit la plus spontanée, chaque essai dure 1200 ms, après quoi l'ensemble des trois cartes est renouvellé.
+Une croix de fixation est affichée durant 500 ms avant chaque essai pour que le sujet reste attentif.
+
+Ok, let's dive in it !
 
 ## 1.Preparation of the stimulus with PyGame
 Some trials : 
