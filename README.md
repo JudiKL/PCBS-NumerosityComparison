@@ -61,7 +61,7 @@ def most_size_side(compteur_gauche, compteur_droit):
 ```
 La fonction ci-dessus assure ce rôle.  S'il y a plus de points à gauche, il seront plus gros à gauche et inversement. Elle regarde le nombre de points, elle définit une taille de rayon spécifique pour le côté où il y en a le moins puis multiplie par deux ce rayon du côté où il y en a le plus. Le ratio de taille entre les deux cartes est donc de 1/2.
 
-### <u>Définir sur quelle carte la taille sera la plus importante :</u>
+### <u>Calculer la distance entre nos points :</u>
 
 ```
 def distance_points(couple1,couple2):
